@@ -1,9 +1,27 @@
 import readlinesync = require('readline-sync');
+import { Conta } from './src/model/Conta';
+import { colors } from './src/util/Color';
 
 export function main() {
   let opcao: number;
 
+  // Cria novas instâncias (Objetos) da Classe Conta
+  const c1 = new Conta(1, 123, 1, 'Teste', 100000);
+  c1.visualizar();
+
+  // Saque
+  console.log(c1.sacar(200000.0));
+  c1.visualizar();
+
+  const c2 = new Conta(2, 123, 2, 'Teste2', 200000);
+  c2.visualizar();
+
+  // depósito
+  c2.depositar(100.0);
+  c2.visualizar();
+
   while (true) {
+    console.log(colors.bg.black, colors.fg.green);
     console.log('*'.repeat(50));
     console.log();
     console.log('BANCO SEM NOME');
@@ -21,7 +39,7 @@ export function main() {
     console.log('9 - Sair');
     console.log();
     console.log('*'.repeat(50));
-    console.log();
+    console.log(colors.reset);
 
     opcao = readlinesync.questionInt('Entre com a opção desejada: ');
 
@@ -64,11 +82,13 @@ export function main() {
 }
 
 export function about() {
+  console.log(colors.bg.black, colors.fg.green);
   console.log('*'.repeat(50));
   console.log('Projeto Desenvolvido por: ');
   console.log('Cauã R. Pereira - 7aauac@gmail.com');
   console.log('https://github.com/c-rocha7');
   console.log('*'.repeat(50));
+  console.log(colors.reset);
 }
 
 main();
