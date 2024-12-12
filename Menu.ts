@@ -2,6 +2,7 @@ import readlinesync = require('readline-sync');
 import { Conta } from './src/model/Conta';
 import { colors } from './src/util/Color';
 import { ContaCorrente } from './src/model/ContaCorrente';
+import { ContaPoupanca } from './src/model/ContaPoupanca';
 
 export function main() {
   let opcao: number;
@@ -22,16 +23,23 @@ export function main() {
   // c2.visualizar();
 
   // Contas Correntes
-  const cc1 = new ContaCorrente(3, 123, 1, 'Teste3', 100000, 1000);
-  cc1.visualizar();
+  // const cc1 = new ContaCorrente(3, 123, 1, 'Teste3', 100000, 1000);
+  // cc1.visualizar();
 
   // Saque na Conta Corrente
-  cc1.sacar(100500);
-  cc1.visualizar();
+  // cc1.sacar(100500);
+  // cc1.visualizar();
 
   // Depósito na Conta Corrente
-  cc1.depositar(2000);
-  cc1.visualizar();
+  // cc1.depositar(2000);
+  // cc1.visualizar();
+
+  const cp1 = new ContaPoupanca(4, 123, 1, 'Teste4', 100000, 10);
+  cp1.visualizar();
+  cp1.sacar(50000);
+  cp1.visualizar();
+  cp1.depositar(25000);
+  cp1.visualizar();
 
   console.log();
 
