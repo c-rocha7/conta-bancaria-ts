@@ -77,14 +77,15 @@ export function main() {
     console.log('6 - Sacar');
     console.log('7 - Depositar');
     console.log('8 - Transferir valores entre Contas');
-    console.log('9 - Sair');
+    console.log('9 - Buscar Conta por Titular');
+    console.log('0 - Sair');
     console.log();
     console.log('*'.repeat(50));
     console.log(colors.reset);
 
     opcao = readlinesync.questionInt('Entre com a opção desejada: ');
 
-    if (opcao === 9) {
+    if (opcao === 0) {
       console.log('\nBanco Sem Nome - O Começo do Fim é Hoje!\n');
       about();
       process.exit(0);
@@ -272,6 +273,17 @@ export function main() {
         valor = readlinesync.questionFloat();
 
         contas.transferir(numero, numeroDestino, valor);
+
+        keyPress();
+        break;
+
+      case 9:
+        console.log('\n\nConsulta pelo Titular\n\n');
+
+        console.log('Digite o nome do titular: ');
+        titular = readlinesync.question();
+
+        contas.procurarPorTitular(titular);
 
         keyPress();
         break;

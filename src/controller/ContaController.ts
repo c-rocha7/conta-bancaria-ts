@@ -78,6 +78,16 @@ export class ContaController implements ContaRepository {
       console.log('Conta de Origem e/ou Conta de Destino não foi encontrada!');
   }
 
+  procurarPorTitular(titular: string): void {
+    // Filtragem dos dados
+    let buscaPorTitular = this.listaContas.filter((conta) =>
+      conta.titular.toUpperCase().includes(titular.toUpperCase())
+    );
+
+    // Listagem dos Dados
+    buscaPorTitular.forEach((conta) => conta.visualizar());
+  }
+
   public gerarNumero(): number {
     return ++this.numero;
   }
